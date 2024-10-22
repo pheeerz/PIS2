@@ -8,19 +8,15 @@ namespace PIS2
 {
     internal class Planets
     {
-        public string Name { get; set; }
-        public DateTime OpeningDate { get; set; }
-        public double Radius { get; set; }
+        public string name { get; set; }
+        public DateTime openingDate { get; set; }
+        public double radius { get; set; }
 
-        public Planets(string[] items)
+        public Planets(string Name, DateTime OpeningDate, double Radius)
         {
-            string name = "";
-            DateTime openingDate = Convert.ToDateTime(items[items.Length - 2]);
-            double radius = Convert.ToDouble(items[items.Length - 1]);
-            Name = name;
-            OpeningDate = openingDate;
-            Radius = radius;
-
+            name = Name;
+            openingDate = OpeningDate;
+            radius = Radius;
         }
     }
 }

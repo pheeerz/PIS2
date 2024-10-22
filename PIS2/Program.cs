@@ -11,37 +11,44 @@ namespace PIS2
         static void Main(string[] args)
         {
             Console.WriteLine("Введите название класса и его свойства");
+            string[] inputItems = "Planets \"Q W E   R TY\" 2024.01.01 13,1435".Split(' ');
 
+            if (inputItems[0] == "Planets")
+            {
+                Planets planets = TEST(inputItems);
+                Console.WriteLine(planets.name);
+                Console.WriteLine(planets.openingDate);
+                Console.WriteLine(planets.radius);
+            }
+            else
+            {
+                Console.WriteLine("Некорректный ввод");
+            }
+        }
 
-            //string[] inputItems = Console.ReadLine().Split(' '); //для ввода через консоль
+        private static Planets TEST(string[] inputItems)
+        {
+            inputItems = ToCorrectString(inputItems);
 
-            string[] inputItems = test().Split(' '); // функция с вводными данными
+            string Name = "";
+            DateTime OpeningDate = Convert.ToDateTime(inputItems[inputItems.Length - 2]);
+            double Radius = Convert.ToDouble(inputItems[inputItems.Length - 1]);
 
+            for (int x = 1; x < inputItems.Length - 2; x++)
+            {
+                Name += inputItems[x] + " ";
+            }
+
+            return new Planets(Name, OpeningDate, Radius);
+        }
+
+        private static string[] ToCorrectString(string[] inputItems)
+        {
             for (int i = 0; i < inputItems.Count(); i++)
             {
                 inputItems[i] = inputItems[i].Replace("\"", "");
             }
-
-            if (inputItems[0] == "Planets")
-            {
-                Planets planet = new Planets(inputItems);
-
-                for (int x = 1; x < inputItems.Length - 2; x++)
-                {
-                    planet.Name += inputItems[x] + " ";
-                }
-                Console.WriteLine(planet.Name);
-                Console.WriteLine(planet.OpeningDate);
-                Console.WriteLine(planet.Radius);
-            }
-
+            return inputItems;
         }
-        public static string test()
-        {
-            string input = "Planets \"Q W E   R TY\" 2024.01.01 13,1435";
-            return input;
-
-        }
-
     }
 }
