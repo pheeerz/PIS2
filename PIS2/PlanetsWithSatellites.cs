@@ -9,7 +9,7 @@ namespace PIS2
     internal class PlanetsWithSatellites: Planets
     {
         public int counterOfSatellites {  get; set; }
-        PlanetsWithSatellites(string Name, DateTime OpeningDate, double Radius, int CounterOfSatellites) : base(Name, OpeningDate, Radius)
+        public PlanetsWithSatellites(string Name, DateTime OpeningDate, double Radius, int CounterOfSatellites) : base(Name, OpeningDate, Radius)
         {
             counterOfSatellites = CounterOfSatellites;
         }
